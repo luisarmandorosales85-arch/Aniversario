@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>50 Aniversario | Elías y Raquel</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'gold-accent': '#C9A35E',
+                        'dark-bg': '#0F0F0F',
+                        'cream-white': '#F5F5DC',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Georgia', 'serif'],
+                        script: ['Great Vibes', 'cursive'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Inter:wght@100..900&display=swap');
+        
+        .gold-text-effect {
+            font-family: 'Great Vibes', cursive;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+        
+        .photo-blend {
+            mix-blend-mode: soft-light;
+            opacity: 0.9;
+            transition: opacity 0.5s;
+        }
+
+        .photo-blend:hover {
+            opacity: 1;
+        }
+
+        .rsvp-button {
+            transition: background-color 0.3s, transform 0.1s;
+        }
+
+        .rsvp-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Se mantiene el ID del mapa por si se desea usar CSS, pero ahora será una imagen */
+        #map {
+            /* Propiedad solo para mantener el tamaño visual */
+            height: 400px; 
+            width: 100%;
+        }
+
+        /* AJUSTE CLAVE PARA GOOGLE SITES: Forzar una altura fija para evitar el recorte */
+        .header-fixed-height {
+            height: 500px; 
+        }
+
+        /* AJUSTE CLAVE PARA GOOGLE SITES: Asegurar que el fondo cubra el div interno */
+        .header-background-overlay {
+            background-color: #0F0F0F; /* Color oscuro como fondo base */
+            background-image: url('https://placehold.co/1200x800/222222/C9A35E?text=Foto+Elias+y+Raquel');
+        }
+    </style>
+</head>
+<body class="bg-cream-white min-h-screen text-dark-bg font-serif">
+
+    <!-- Script de Inicialización y Contador Regresivo -->
+    <script>
+        window.onload = function() {
+            // --- Contador Regresivo ---
+            const countdownElement = document.getElementById('countdown');
+            const eventDate = new Date('2025-12-27T19:00:00').getTime();
+
+            function updateCountdown() {
+                // El elemento existe aquí debido a window.onload
+                const now = new Date().getTime();
+                const distance = eventDate - now;
+
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                if (distance < 0) {
+                    clearInterval(interval);
+                    countdownElement.innerHTML = `<span class="text-lg text-gold-accent font-bold">¡LA CELEBRACIÓN HA COMENZADO!</span>`;
+                    return;
+                }
+                
+                countdownElement.innerHTML = `
+                    <div class="flex flex-col items-center mx-2 p-3 bg-cream-white/20 rounded-lg backdrop-blur-sm">
+                        <span class="text-3xl font-bold">${days}</span>
+                        <span class="text-xs uppercase mt-1">Días</span>
+                    </div>
+                    <div class="flex flex-col items-center mx-2 p-3 bg-cream-white/20 rounded-lg backdrop-blur-sm">
+                        <span class="text-3xl font-bold">${hours}</span>
+                        <span class="text-xs uppercase mt-1">Horas</span>
+                    </div>
+                    <div class="flex flex-col items-center mx-2 p-3 bg-cream-white/20 rounded-lg backdrop-blur-sm">
+                        <span class="text-3xl font-bold">${minutes}</span>
+                        <span class="text-xs uppercase mt-1">Minutos</span>
+                    </div>
+                    <div class="hidden sm:flex flex-col items-center mx-2 p-3 bg-cream-white/20 rounded-lg backdrop-blur-sm">
+                        <span class="text-3xl font-bold">${seconds}</span>
+                        <span class="text-xs uppercase mt-1">Segundos</span>
+                    </div>
+                `;
+            }
+            
+            const interval = setInterval(updateCountdown, 1000);
+            updateCountdown();
+        };
+    </script>
+
+    <!-- Sección Principal / Hero -->
+    <header class="header-fixed-height flex flex-col justify-center items-center text-center p-4">
+        
+        <div class="header-background-overlay absolute inset-0 bg-cover bg-center" 
+            style="background-image: url('https://placehold.co/1200x800/222222/C9A35E?text=Foto+Elias+y+Raquel');">
+            <div class="absolute inset-0 bg-dark-bg opacity-50"></div>
+        </div>
+
+        <div class="relative z-10 text-cream-white max-w-2xl">
+            <p class="text-lg tracking-widest uppercase mb-2">Con gran alegría, les invitan a celebrar</p>
+            <h1 class="text-6xl sm:text-8xl gold-text-effect font-script mb-6 drop-shadow-lg">
+                Elías & Raquel
+            </h1>
+            <p class="text-3xl sm:text-4xl font-serif font-light mb-8 border-t border-b border-gold-accent py-3 inline-block">
+                50 Aniversario · Bodas de Oro
+            </p>
+            
+            <div id="countdown" class="flex justify-center text-cream-white mb-10">
+                <!-- Contador Regresivo -->
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-16">
+
+        <!-- Sección de Historia / Then & Now -->
+        <section id="historia" class="mb-20 text-center">
+            <h2 class="text-5xl gold-text-effect font-script text-gold-accent mb-10">
+                Una Historia de Amor
+            </h2>
+            <p class="text-lg max-w-3xl mx-auto mb-10 text-gray-700">
+                Cincuenta años son el testimonio de una promesa cumplida, de un amor que ha florecido a través del tiempo. Revivamos juntos este hermoso viaje.
+            </p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <div class="p-4 bg-white rounded-lg shadow-xl hover:shadow-2xl transition duration-500">
+                    <!-- URL DE IMAGEN (THEN) -->
+                    <img src="https://ibb.co/NnrM35X" alt="Elías y Raquel jóvenes" class="w-full h-auto object-cover rounded-md photo-blend">
+                    <p class="mt-3 text-xl font-bold text-dark-bg">THEN</p>
+                    <p class="text-sm text-gray-500">1975 | El inicio de la aventura</p>
+                </div>
+                <div class="p-4 bg-white rounded-lg shadow-xl hover:shadow-2xl transition duration-500">
+                    <!-- URL DE IMAGEN (NOW) -->
+                    <img src="https://ibb.co/NnrM35X" alt="Elías y Raquel actuales" class="w-full h-auto object-cover rounded-md photo-blend">
+                    <p class="mt-3 text-xl font-bold text-dark-bg">NOW</p>
+                    <p class="text-sm text-gray-500">2025 | 50 Años de amor inquebrantable</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de Detalles del Evento -->
+        <section id="detalles" class="mb-20 text-center">
+            <div class="max-w-4xl mx-auto p-8 bg-gold-accent/10 rounded-xl shadow-inner border border-gold-accent/30">
+                <h2 class="text-5xl gold-text-effect font-script text-gold-accent mb-8">
+                    Detalles del Evento
+                </h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Fecha y Hora -->
+                    <div class="p-4">
+                        <svg class="w-8 h-8 mx-auto mb-3 text-gold-accent" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"/>
+                        </svg>
+                        <h3 class="text-2xl font-bold mb-1">Día y Hora</h3>
+                        <p class="text-lg">Sábado 27 de Diciembre 2025</p>
+                        <p class="text-lg font-bold text-gold-accent">19:00 hrs (7:00 p.m.)</p>
+                    </div>
+
+                    <!-- Vestimenta -->
+                    <div class="p-4">
+                        <svg class="w-8 h-8 mx-auto mb-3 text-gold-accent" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10 9a3 3 0 100-6 3 3 0 000 6zM9 16h2v-2a2 2 0 00-2-2H9a2 2 0 00-2 2v2zM12 11a4 4 0 00-8 0v3h8v-3z"/>
+                        </svg>
+                        <h3 class="text-2xl font-bold mb-1">Código de Vestimenta</h3>
+                        <p class="text-lg font-bold">Formal</p>
+                        <p class="text-sm text-gray-600">Se ruega vestir de Formal para la ocasión.</p>
+                    </div>
+
+                    <!-- Ubicación -->
+                    <div class="p-4">
+                        <svg class="w-8 h-8 mx-auto mb-3 text-gold-accent" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 2a6 6 0 00-6 6c0 4.418 5.4 10.383 6 11.25.6-.867 6-6.832 6-11.25a6 6 0 00-6-6zm0 8a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
+                        </svg>
+                        <h3 class="text-2xl font-bold mb-1">Recepción</h3>
+                        <p class="text-lg font-bold">Jardín Flamingos Casalot</p>
+                        <p class="text-sm text-gray-600">Carretera México - Toluca Km 26.5</p>
+                        <p class="text-sm text-gray-600">Cuajimalpa de Morelos, CDMX</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de RSVP (Confirmación de Asistencia) -->
+        <section id="rsvp" class="mb-20">
+            <div class="max-w-xl mx-auto p-6 sm:p-10 bg-white rounded-xl shadow-2xl border-t-4 border-gold-accent">
+                <h2 class="text-4xl text-center gold-text-effect font-script text-dark-bg mb-6">
+                    Confirma tu Asistencia (R.S.V.P.)
+                </h2>
+                <p class="text-center text-gray-600 mb-8">
+                    Por favor, ayúdanos a planificar este día tan especial **antes del 1 de Diciembre de 2025** llenando el formulario.
+                </p>
+
+                <a href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAYAAA31pnNUOUlLVTlONTBER0lFSDY5WU9ESzVINVRIWi4u" 
+                   target="_blank" 
+                   class="rsvp-button w-full inline-block text-center bg-gold-accent text-dark-bg font-bold py-3 rounded-lg uppercase tracking-wider text-lg shadow-lg hover:bg-gold-accent/80 transition duration-300">
+                    Ir al Formulario de Confirmación
+                </a>
+            </div>
+        </section>
+
+        <!-- Sección de Ubicación y Mapa -->
+        <section id="ubicacion" class="mb-20 text-center">
+            <h2 class="text-5xl gold-text-effect font-script text-gold-accent mb-8">
+                Cómo Llegar
+            </h2>
+            <p class="text-lg max-w-3xl mx-auto mb-6 text-gray-700">
+                La recepción se llevará a cabo en Jardín Flamingos Casalot.
+            </p>
+            
+            <div class="max-w-5xl mx-auto rounded-xl overflow-hidden shadow-2xl border-4 border-gold-accent">
+                <!-- Imagen de marcador de mapa -->
+                <img id="map" src="https://placehold.co/800x400/C9A35E/F5F5DC?text=MAPA+DE+UBICACI%C3%93N+AQU%C3%8D" alt="Mapa de la ubicación de la recepción" class="w-full h-auto object-cover">
+                
+                <!-- Enlace directo a Google Maps para navegación móvil -->
+                <a href="https://www.google.com/maps/search/?api=1&query=Jard%C3%ADn+Flamingos+Casalot,+Carretera+M%C3%A9xico+-+Toluca+Km+26.5,+Cuajimalpa+de+Morelos" 
+                   target="_blank" class="block bg-dark-bg text-cream-white py-3 font-bold hover:bg-gold-accent hover:text-dark-bg transition duration-300">
+                    Abrir en Google Maps para Navegar
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark-bg text-cream-white text-center p-8">
+        <p class="mb-2 text-lg gold-text-effect font-script text-gold-accent">Elías & Raquel</p>
+        <p class="
