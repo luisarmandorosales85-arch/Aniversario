@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>50 Aniversario | Elías y Raquel</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Incluir Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
     <script>
         tailwind.config = {
@@ -77,12 +76,11 @@
     <!-- Script de Inicialización y Contador Regresivo -->
     <script>
         window.onload = function() {
-            // --- Inicializar Lucide Icons ---
             lucide.createIcons();
 
-            // --- Contador Regresivo ---
             const countdownElement = document.getElementById('countdown');
-            const eventDate = new Date('2025-12-27T19:00:00').getTime();
+            // Hora de inicio del evento a las 17:30:00 (5:30 p.m.)
+            const eventDate = new Date('2025-12-27T17:30:00').getTime();
 
             function updateCountdown() {
                 const now = new Date().getTime();
@@ -128,7 +126,7 @@
     <header class="header-fixed-height flex flex-col justify-center items-center text-center p-4">
         
         <div class="header-background-overlay absolute inset-0 bg-cover bg-center" 
-            style="background-image: url('https://i.ibb.co/cKKNnJMZ/Screenshot-2025-10-16-20-42-10-762-com-whatsapp-edit.jpg');">
+            style="background-image: url('https://i.ibb.co/spkdkF1d/Captura-de-pantalla-2025-10-16-151545.png');">
             <!-- Overlay más oscuro y sutil -->
             <div class="absolute inset-0 bg-dark-bg opacity-40"></div> 
         </div>
@@ -163,16 +161,14 @@
                         <i data-lucide="calendar-check" class="w-9 h-9 mx-auto mb-3 text-gold-accent"></i>
                         <h3 class="text-2xl font-bold mb-1">Día y Hora</h3>
                         <p class="text-lg text-gray-700">Sábado 27 de Diciembre 2025</p>
-                        <p class="text-xl font-extrabold text-gold-accent mt-1">19:00 hrs</p>
+                        <!-- Horario de inicio y fin -->
+                        <p class="text-xl font-extrabold text-gold-accent mt-1">17:30 hrs - 23:00 hrs</p>
                     </div>
 
                     <!-- Vestimenta -->
                     <div class="p-4 border-b md:border-b-0 md:border-r border-gold-accent/30">
-                        <!-- Icono de traje y vestido -->
-                        <div class="flex justify-center items-center mb-3">
-                            <i data-lucide="shirt" class="w-8 h-8 text-gold-accent transform rotate-90 scale-x-[-1] mr-1"></i>
-                            <i data-lucide="shirt" class="w-8 h-8 text-gold-accent ml-1"></i>
-                        </div>
+                        <!-- Removidos los iconos. Enfocados en el texto y un separador elegante. -->
+                        <div class="w-12 h-0.5 bg-gold-accent mx-auto mb-3"></div> 
                         <h3 class="text-2xl font-bold mb-1">Código de Vestimenta</h3>
                         <p class="text-lg font-bold">Formal Elegante</p>
                         <p class="text-sm text-gray-600 mt-1">Agradecemos su formalidad para la ocasión.</p>
@@ -218,8 +214,8 @@
             </p>
             
             <div class="max-w-5xl mx-auto rounded-xl overflow-hidden shadow-2xl border-4 border-gold-accent">
-                <!-- Imagen de marcador de mapa -->
-                <img id="map" src="https://placehold.co/800x400/C9A35E/F5F5DC?text=MAPA+DE+UBICACI%C3%93N+AQU%C3%8D" alt="Mapa de la ubicación de la recepción" class="w-full h-auto object-cover">
+                <!-- Imagen del mapa -->
+                <img id="map" src="https://i.ibb.co/d0jsLzr5/Captura-de-pantalla-2025-10-16-093250.png" alt="Mapa de la ubicación del Jardín Flamingos Casalot" class="w-full h-auto object-cover">
                 
                 <!-- Enlace directo a Google Maps para navegación móvil -->
                 <a href="https://www.google.com/maps/search/?api=1&query=Jard%C3%ADn+Flamingos+Casalot,+Carretera+M%C3%A9xico+-+Toluca+Km+26.5,+Cuajimalpa+de+Morelos" 
@@ -243,3 +239,4 @@
 
 </body>
 </html>
+
